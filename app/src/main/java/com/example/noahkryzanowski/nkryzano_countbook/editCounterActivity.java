@@ -118,14 +118,36 @@ public class editCounterActivity extends AddCounterActivity {
         String commentStr;
 
         //Getting Counter Name
-        EditText textName = (EditText) findViewById(R.id.editCounterName);
-        nameStr = textName.getText().toString();
+        try {
+            EditText textName = (EditText) findViewById(R.id.editCounterName);
+            nameStr = textName.getText().toString();
+            if(checkEmpty(textName)) {
+                return;
+            }
+        } catch (Exception e) {
+            return;
+        }
 
         //Getting Counter Values - Initial and Current
-        EditText textCurrentValue = (EditText) findViewById(R.id.editCounterValue);
-        valueCurr = Integer.parseInt(textCurrentValue.getText().toString());
-        EditText textInitialValue = (EditText) findViewById(R.id.editInitialValue);
-        valueInit = Integer.parseInt(textInitialValue.getText().toString());
+        try {
+            EditText textCurrentValue = (EditText) findViewById(R.id.editCounterValue);
+            valueCurr = Integer.parseInt(textCurrentValue.getText().toString());
+            if(checkEmpty(textCurrentValue)) {
+                return;
+            }
+        } catch (Exception e) {
+            return;
+        }
+
+        try {
+            EditText textInitialValue = (EditText) findViewById(R.id.editInitialValue);
+            valueInit = Integer.parseInt(textInitialValue.getText().toString());
+            if(checkEmpty(textInitialValue)) {
+                return;
+            }
+        } catch (Exception e) {
+            return;
+        }
 
         //Getting Counter Comment
         EditText textComment = (EditText) findViewById(R.id.editComment);

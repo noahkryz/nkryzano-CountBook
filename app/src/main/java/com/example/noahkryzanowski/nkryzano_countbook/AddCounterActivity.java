@@ -52,12 +52,26 @@ public class AddCounterActivity extends AppCompatActivity {
         String commentStr;
 
         //Getting Counter Name
-        EditText textCounterName = (EditText) findViewById(R.id.editCounterName);
-        nameStr = textCounterName.getText().toString();
+        try {
+            EditText textCounterName = (EditText) findViewById(R.id.editCounterName);
+            nameStr = textCounterName.getText().toString();
+            if(checkEmpty(textCounterName)) {
+                return;
+            }
+        } catch(Exception e) {
+            return;
+        }
 
         //Getting Counter Value
-        EditText textCounterValue = (EditText) findViewById(R.id.newCounterValue);
-        valueInit = Integer.parseInt(textCounterValue.getText().toString());
+        try {
+            EditText textCounterValue = (EditText) findViewById(R.id.newCounterValue);
+            valueInit = Integer.parseInt(textCounterValue.getText().toString());
+            if(checkEmpty(textCounterValue)) {
+                return;
+            }
+        } catch (Exception e) {
+            return;
+        }
 
         //Getting Counter Comment
         EditText textComment = (EditText) findViewById(R.id.editComment);
