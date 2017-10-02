@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ListView
+        android:id="@+id/counterList"
+        android:layout_width="fill_parent"
+        android:layout_height="425dp"
+        android:layout_weight="0.76"
+        android:scrollbars="vertical" />
+
+    <TextView
+        android:id="@+id/counterTotal"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Counters:"
+        android:textAlignment="center"
+        android:textSize="8pt" />
+
+    <TextView
+        android:id="@+id/textCount"
+        android:layout_width="120dp"
+        android:layout_height="20dp"
+        android:textAlignment="center"
+        android:textSize="8pt" />
+
+    <Button
+        android:id="@+id/add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add New Counter" />
+
+</LinearLayout>

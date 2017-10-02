@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textCounterName"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="118dp"
+        android:layout_toStartOf="@+id/editCounterName"
+        android:layout_weight="0.03"
+        android:paddingLeft="2dp"
+        android:text="Counter Name"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/buttonReset"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintTop_creator="1" />
+
+    <Button
+        android:id="@+id/buttonReset"
+        android:layout_width="88dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="54dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="resetCounter"
+        android:text="Reset"
+        app:layout_constraintBottom_toTopOf="@+id/textCounterName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editCounterName"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/textCounterName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCounterName"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        android:paddingTop="16dp"
+        android:text=""
+        android:textSize="7pt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textCounterName"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textCounterValue"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCounterName"
+        android:layout_marginTop="24dp"
+        android:layout_toStartOf="@+id/editCounterName"
+        android:text="Counter Value"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/textCounterName"
+        app:layout_constraintTop_toBottomOf="@+id/textCounterName" />
+
+    <EditText
+        android:id="@+id/editCounterValue"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCounterValue"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingTop="16dp"
+        android:text=""
+        android:textSize="7pt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textCounterValue"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textComment"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignEnd="@+id/textCounterValue"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCounterValue"
+        android:layout_marginBottom="72dp"
+        android:layout_marginTop="8dp"
+        android:text="Comment (optional)"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+        app:layout_constraintLeft_toLeftOf="@+id/textCounterValue"
+        app:layout_constraintTop_toBottomOf="@+id/textCounterValue" />
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginStart="19dp"
+        android:onClick="saveChanges"
+        android:text="Confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <EditText
+        android:id="@+id/editComment"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="text|textLongMessage"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textComment"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="16dp" />
+
+    <Button
+        android:id="@+id/buttonMinus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="45dp"
+        android:onClick="decrementCounter"
+        android:text="-"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/buttonPlus"
+        app:layout_constraintTop_toBottomOf="@+id/editComment" />
+
+    <Button
+        android:id="@+id/buttonPlus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="45dp"
+        android:onClick="incrementCounter"
+        android:text="+"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editComment" />
+
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="deleteCounter"
+        android:text="Delete"
+        app:layout_constraintLeft_toRightOf="@+id/buttonReset"
+        app:layout_constraintTop_toTopOf="@+id/buttonReset" />
+
+    <TextView
+        android:id="@+id/initialValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Initial Value"
+        android:textSize="16sp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editInitialValue"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Initial Value"
+        android:textSize="7pt"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/initialValue" />
+
+    <TextView
+        android:id="@+id/textDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/buttonMinus"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

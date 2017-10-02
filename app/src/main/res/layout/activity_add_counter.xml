@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/textCounterName"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="118dp"
+        android:layout_toStartOf="@+id/editCounterName"
+        android:layout_weight="0.03"
+        android:paddingLeft="2dp"
+        android:text="Counter Name"
+        android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintTop_creator="1"
+        tools:layout_editor_absoluteX="24dp" />
+
+    <EditText
+        android:id="@+id/editCounterName"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_alignBottom="@+id/textCounterName"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCounterName"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="textCapWords"
+        android:paddingTop="16dp"
+        android:text=""
+        android:textSize="7pt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textCounterName"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textCounterValue"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCounterName"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="24dp"
+        android:layout_toStartOf="@+id/editCounterName"
+        android:text="Counter Value"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="@+id/textCounterName"
+        app:layout_constraintTop_toBottomOf="@+id/textCounterName" />
+
+    <EditText
+        android:id="@+id/newCounterValue"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/textCounterValue"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingTop="16dp"
+        android:text=""
+        android:textSize="7pt"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textCounterValue"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/textComment"
+        android:layout_width="95dp"
+        android:layout_height="64dp"
+        android:layout_alignEnd="@+id/textCounterValue"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textCounterValue"
+        android:layout_marginBottom="72dp"
+        android:layout_marginLeft="-8dp"
+        android:layout_marginTop="8dp"
+        android:text="Comment (optional)"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonConfirm"
+        app:layout_constraintLeft_toLeftOf="@+id/textCounterValue"
+        app:layout_constraintTop_toBottomOf="@+id/textCounterValue" />
+
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginRight="19dp"
+        android:layout_marginStart="19dp"
+        android:onClick="addCounter"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
+
+    <EditText
+        android:id="@+id/editComment"
+        android:layout_width="240dp"
+        android:layout_height="60dp"
+        android:layout_marginRight="16dp"
+        android:ems="10"
+        android:inputType="text|textLongMessage"
+        app:layout_constraintBaseline_toBaselineOf="@+id/textComment"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>
