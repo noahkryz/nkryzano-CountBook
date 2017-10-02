@@ -182,7 +182,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:text="Initial Value"
         android:textSize="7pt"
         app:layout_constraintRight_toRightOf="parent"
