@@ -34,21 +34,24 @@ public class MainActivity extends AppCompatActivity {
     private static final String FILENAME = "countbook.sav";
 
     private ListView counterList;
-
     private ArrayList<Counter> counters = new ArrayList<>();
     private ArrayAdapter<Counter> adapter;
-
 
     public static final int CREATE_CODE = 1;
     public static final int EDIT_CODE = 2;
     public static final String EXTRA_MESSAGE = "noahkryzanowski.nkryzano-Countbook.MESSAGE";
 
+    /**
+     * Called on the creation of the MainActivity. This is the main window that the user
+     * interacts with
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
+        
         Button addNewCounterButton = (Button) findViewById(R.id.add);
         counterList = (ListView) findViewById(R.id.counterList);
 
@@ -59,12 +62,10 @@ public class MainActivity extends AppCompatActivity {
                 Counter editCounter = (Counter)o;
 
                 Intent intent = new Intent(MainActivity.this, editCounterActivity.class);
-
                 Gson gson = new Gson();
                 String counterFromActivity = gson.toJson(editCounter);
                 intent.putExtra(EXTRA_MESSAGE, counterFromActivity);
                 intent.putExtra("index", Integer.toString(position));
-
                 startActivityForResult(intent, EDIT_CODE);
             }
         });
@@ -78,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Takes in 3 parameters and decides whether to pull data from the AddCounterActivity
+     * or the EditCounterActivity.
+     *
+     * @param requestCode - set to 1 for create, 2 for edit counter
+     * @param resultCode - looks for result ok
+     * @param data - the data from the gson call
+     */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         try {
@@ -113,6 +122,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Called on the start of the MainActivity
+     *
+     */
     @Override
     protected void onStart() {
         // TODO Auto-generated method stub
@@ -123,19 +136,30 @@ public class MainActivity extends AppCompatActivity {
         updateTotal();
     }
 
+    /**
+     * Updates the list of counters in the ListView
+     *
+     */
     private void updateList() {
         updateTotal();
         saveInFile();
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * Updates the number of counters on the main screen
+     *
+     */
     private void updateTotal() {
         TextView counterTotal = (TextView) findViewById(R.id.textCount);
         counterTotal.setText(Integer.toString(counters.size()));
     }
 
+    /**
+     * Loads the counters from the file countbook.sav
+     *
+     */
     private void loadFromFile() {
-
         try {
             FileInputStream fis = openFileInput(FILENAME);
             BufferedReader in = new BufferedReader(new InputStreamReader(fis));
@@ -150,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Saves the tweets in a file
+     * Saves the counters in the file countbook.sav
      *
      */
     private void saveInFile() {
@@ -168,7 +192,4 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
-
-
 }

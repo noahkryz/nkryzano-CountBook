@@ -19,6 +19,12 @@ public class editCounterActivity extends AddCounterActivity {
     private EditText textComment;
     private String index;
 
+    /**
+     * Called on the creation of the edit activity, when the user selects a counter
+     * from the current ListView
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +39,12 @@ public class editCounterActivity extends AddCounterActivity {
         editCounter();
 
     }
+
+    /**
+     * Used to edit the values in the counter. Used in resetCounter(), incrementCounter(),
+     * decrementCounter()
+     *
+     */
     public void editCounter() {
         textName = (EditText) findViewById(R.id.editCounterName);
         textName.setText(counter.getName());
@@ -45,57 +57,87 @@ public class editCounterActivity extends AddCounterActivity {
 
         textComment = (EditText) findViewById(R.id.editComment);
         textComment.setText(counter.getComment());
-
-        //TextView textDate = (TextView) findViewById(R.id.textDate);
-        //textDate.setText(counter.getDate().toString());
     }
 
+    /**
+     * Used to reset the current value of the counter to the initial value. Called onClick
+     * on the buttonReset in activity_edit_counter.xml
+     *
+     * @param view
+     */
     public void resetCounter(View view) {
         counter.reset();
         editCounter();
     }
 
+    /**
+     * Used to increment the counter by a value of one. Called onClick on the buttonPlus
+     * in activity_edit_counter.xml
+     *
+     * @param view
+     */
     public void incrementCounter(View view) {
         counter.increment();
         editCounter();
     }
 
+    /**
+     * Used to decrement the counter by a value of one. Called onClick on the buttonMinus
+     * in activity_edit_counter.xml
+     *
+     * @param view
+     */
     public void decrementCounter(View view) {
         counter.decrement();
         editCounter();
     }
 
+    /**
+     * Deletes the counter from the list of counters. Called onClick on the buttonDelete
+     *
+     * @param view
+     */
     public void deleteCounter(View view) {
         intent.putExtra("delete", "true");
         intent.putExtra("index", index);
         setResult(RESULT_OK, intent);
-
         finish();
-
     }
 
+    /**
+     * Used to save the changes that were made in the edit screen, and push them back
+     * to the MainActivity function
+     *
+     * @param view
+     */
     public void saveChanges(View view) {
+        //Variable Initialization
         String nameStr;
         Integer valueInit;
         Integer valueCurr;
         String commentStr;
 
+        //Getting Counter Name
         EditText textName = (EditText) findViewById(R.id.editCounterName);
         nameStr = textName.getText().toString();
 
+        //Getting Counter Values - Initial and Current
         EditText textCurrentValue = (EditText) findViewById(R.id.editCounterValue);
         valueCurr = Integer.parseInt(textCurrentValue.getText().toString());
         EditText textInitialValue = (EditText) findViewById(R.id.editInitialValue);
         valueInit = Integer.parseInt(textInitialValue.getText().toString());
 
+        //Getting Counter Comment
         EditText textComment = (EditText) findViewById(R.id.editComment);
         commentStr = textComment.getText().toString();
 
+        //Setting new values of the counter
         counter.setName(nameStr);
         counter.setInitialValue(valueInit);
         counter.setCurrentValue(valueCurr);
         counter.setComment(commentStr);
 
+        //Setup the intent, and use Gson to send it back to the MainActivity
         Gson gson = new Gson();
         String counterFromActivity = gson.toJson(counter);
         intent.putExtra("counterFromActivity", counterFromActivity);
